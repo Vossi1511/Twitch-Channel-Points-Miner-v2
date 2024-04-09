@@ -15,7 +15,7 @@ from TwitchChannelPointsMiner.classes.entities.Bet import Strategy, BetSettings,
 from TwitchChannelPointsMiner.classes.entities.Streamer import Streamer, StreamerSettings
 
 twitch_miner = TwitchChannelPointsMiner(
-    username="your-twitch-username",
+    username="Vossi1511",
     password="write-your-secure-psw",           # If no password will be provided, the script will ask interactively
     claim_drops_startup=False,                  # If you want to auto claim all drops from Twitch inventory on the startup
     priority=[                                  # Custom priority in this case for example:
@@ -32,9 +32,9 @@ twitch_miner = TwitchChannelPointsMiner(
         console_username=False,                 # Adds a username to every console log line if True. Also adds it to Telegram, Discord, etc. Useful when you have several accounts
         auto_clear=True,                        # Create a file rotation handler with interval = 1D and backupCount = 7 if True (default)
         time_zone="",                           # Set a specific time zone for console and file loggers. Use tz database names. Example: "America/Denver"
-        file_level=logging.DEBUG,               # Level of logs - If you think the log file it's too big, use logging.INFO
+        file_level=logging.INFO,               # Level of logs - If you think the log file it's too big, use logging.INFO
         emoji=True,                             # On Windows, we have a problem printing emoji. Set to false if you have a problem
-        less=False,                             # If you think that the logs are too verbose, set this to True
+        less=True,                             # If you think that the logs are too verbose, set this to True
         colored=True,                           # If you want to print colored text
         color_palette=ColorPalette(             # You can also create a custom palette color (for the common message).
             STREAMER_online="GREEN",            # Don't worry about lower/upper case. The script will parse all the values.
@@ -49,9 +49,9 @@ twitch_miner = TwitchChannelPointsMiner(
             disable_notification=True,                                              # Revoke the notification (sound/vibration)
         ),
         discord=Discord(
-            webhook_api="https://discord.com/api/webhooks/0123456789/0a1B2c3D4e5F6g7H8i9J",  # Discord Webhook URL
+            webhook_api="https://discord.com/api/webhooks/1101823226067288216/jYUOiSkGq_oVlB5dZm7AxfkSVxgZoK3rAweqVAF6aL4mBzYVJCYre5p4YR5ks7gGT1n6",  # Discord Webhook URL,
             events=[Events.STREAMER_ONLINE, Events.STREAMER_OFFLINE,
-                    Events.BET_LOSE, Events.CHAT_MENTION],                                  # Only these events will be sent to the chat
+                    Events.BET_LOSE, Events.BET_WIN, Events.CHAT_MENTION],                                  # Only these events will be sent to the chat
         ),
         webhook=Webhook(
             endpoint="https://example.com/webhook",                                                                    # Webhook URL
@@ -123,6 +123,6 @@ twitch_miner.mine(
         "streamer-username10",
         "streamer-username11"
     ],                                  # Array of streamers (order = priority)
-    followers=False,                    # Automatic download the list of your followers
+    followers=True,                    # Automatic download the list of your followers
     followers_order=FollowersOrder.ASC  # Sort the followers list by follow date. ASC or DESC
 )
